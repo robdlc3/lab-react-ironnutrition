@@ -2,13 +2,6 @@ import { useState } from 'react';
 import { Card, Row, Col, Divider, Input, Button } from 'antd';
 
 const Search = ({ setSearch, search }) => {
-    //   const [query, setQuery] = useState('');
-
-    //   const handleSearch = (e) => {
-    //     setQuery(e.target.value);
-    //     filterFood(e.target.value);
-    //     console.log("QUERY: ", query);
-    //   };
 
     return (
         <div>

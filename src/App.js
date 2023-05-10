@@ -10,7 +10,7 @@ function App() {
   const [food, setFood] = useState(foods);
   const [foodData, setFoodData] = useState(foods);
   const [search, setSearch] = useState("");
-  // console.log(food)
+  const [showAdd, setShowAdd] = useState(true);
 
   const addNewFood = (newFood) => {
     const updatedFood = [newFood, ...food];
@@ -18,32 +18,26 @@ function App() {
     setFoodData(updatedFood);
   };
 
-  // const filterFoods = (str) => {
-  //   let filteredFoods;
-  //   filteredFoods = foodData.filter((f) => {
-  //     return f.name.toLowerCase().includes(str.toLowerCase())
-  //   })
-
-  //   setFood(filteredFoods);
-  // }
+  const removeFood = (foodName) => {
+    setFood(
+      food.filter((f) => {
+        return f.name !== foodName;
+      })
+    );
+  };
 
   return (
     <div className="">
 
-      {/* <Input type="text" value={search} onChange={(e) => setSearch(e.target.value)}/> */}
-
       <Search setSearch={setSearch} search={search} />
 
-      <AddFoodForm addFood={addNewFood} />
+      <button onClick={() => setShowAdd(!showAdd)}>{showAdd ? "Hide" : "Show"}</button>
+      {showAdd && <AddFoodForm addFood={addNewFood} />}
       <div>
         <Row>
           {food.filter((curr) => curr.name.toLowerCase().includes(search.toLowerCase())).map((f) => {
             return (
-              <FoodBox key={f._id} food={f} />
-              //<div>
-              //<p>{f.name}</p>
-              //<img src={f.image} alt="food" width="100px" />
-              //</div>
+              <FoodBox key={f._id} food={f} foods={food} setFood={setFood} removeFood={removeFood} />
             );
           })}
         </Row>
