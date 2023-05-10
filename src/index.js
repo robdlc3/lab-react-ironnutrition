@@ -1,18 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { useState } from 'react';
+import { Card, Row, Col, Divider, Input, Button } from 'antd';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const Search = ({ setSearch, search }) => {
+  //   const [query, setQuery] = useState('');
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  //   const handleSearch = (e) => {
+  //     setQuery(e.target.value);
+  //     filterFood(e.target.value);
+  //     console.log("QUERY: ", query);
+  //   };
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  return (
+    <div>
+      <label htmlFor="search">Search</label>
+      <Input
+        type="text"
+        name="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      ></Input>
+    </div>
+  );
+};
+
+export default Search;
